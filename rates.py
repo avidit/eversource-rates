@@ -10,7 +10,7 @@ def get_supply_rates():
     soup = BeautifulSoup(site.content, 'html.parser')
     data = soup.select('#MainContentPlaceholder_TEF602CA6001_Col00 > div.cms > div > p:nth-child(2)')[0]
     name = 'Current Supply Rate'
-    rate = float(re.findall('.\d+', data.string)[0])
+    rate = float(re.findall('\d+.\d+', data.string)[0])
     unit = '$/kWh'
     return [{'name': name, 'rate': rate, 'unit': unit}]
 
